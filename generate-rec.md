@@ -29,9 +29,9 @@ http://localhost:8000/queries.json \
 
 ```
 
-# Sysetem Memory Flags 
+# System Memory  
 
-## The system has 128G of RAM. To train the model in this track the following memory flags were used:
+## To train the model in this track the following memory flags were used:
 
 ```
 pio train -- --conf spark.network.timeout=10000000 --master local --driver-memory 128G --executor-memory 128G --conf spark.executor.heartbeatInterval=10000000
@@ -44,5 +44,14 @@ The resulting model was too large to query from PostgreSQL, so rather than stori
 
 ```
 pio deploy -- --driver-memory 126G
+```
+## Playlists with no tracks
+
+The spotify recommendation challenge included 1,000 playlists with no tracks.
+In the main track, we simply used the top 30 tracks from the training data paired with the playlist name to generate recommendations. Below are the spotify track identifiers used to generate recommendations for this portion of the challenge set.
+
+```
+'spotify:track:0QsvXIfqM0zZoerQfsI9lm', 'spotify:track:0SGkqnVQo9KPytSri1H6cF', 'spotify:track:0v9Wz8o0BT8DU38R4ddjeH', 'spotify:track:0VgkVdmE4gld66l8iyGjgx', 'spotify:track:1xznGGDReH1oQq0xzbwXa3', 'spotify:track:2d8JP84HNLKhmd6IYOoupQ', 'spotify:track:2EEeOnHehOozLq4aS0n6SL', 'spotify:track:3a1lNhkSLSkpJE4MSHpDu9', 'spotify:track:3DXncPQOG4VBw3QHh3S817', 'spotify:track:3kxfsdsCpFgN412fpnW85Y', 'spotify:track:4Km5HrUvYTaSUfiSGPJeQR', 'spotify:track:5CtI0qwDJkDQGwXD1H1cLb', 'spotify:track:5dNfHmqgr128gMY2tc5CeJ', 'spotify:track:5hTpBe8h35rJ67eAWHQsJx', 'spotify:track:5OOkp4U9P9oL23maHFHL1h', 'spotify:track:5XJJdNPkwmbUwE79gv0NxK', 'spotify:track:6eT7xZZlB2mwyzJ2sUKG6w', 'spotify:track:6gBFPUFcJLzWGx4lenP6h2', 'spotify:track:6O6M7pJLABmfBRoGZMu76Y', 'spotify:track:7BKLCZ1jbUBVqRi2FVlTVw', 'spotify:track:7GX5flRQZVHRAGd6B4TmDO', 'spotify:track:7KXjTSCq5nL1LoYtL7XAwS', 'spotify:track:7qiZfU4dY1lWllzX7mPBI3', 'spotify:track:7yq4Qj7cqayVTp3FF9CWbm', 'spotify:track:7yyRTcZmCiyzzJlNzGC9Ol', 'spotify:track:25khomWgBVamSdKw7hzm3l', 'spotify:track:27GmP9AWRs744SzKcpJsTZ', 'spotify:track:62vpWI1CHwFy7tMIcSStl8', 'spotify:track:152lZdxL1OR0ZMW6KquMif', 
+'spotify:track:343YBumqHu19cGoGARUTsd'
 ```
 
