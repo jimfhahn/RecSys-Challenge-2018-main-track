@@ -1,6 +1,6 @@
 # Generating Recs from Data
 
-After the similar product engine is built, the system enters training, and finally serving functionality. Formally, the commands for this process in PreditionIO are:
+After the similar product engine is built, the system enters training, and finally serving functionality. Formally, the commands for this process in PredictionIO are:
 
 ```
 pio build --verbose
