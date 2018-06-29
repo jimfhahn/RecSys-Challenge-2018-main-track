@@ -2,7 +2,7 @@
 
 Several PosgreSQL queries were used to cleanup repetitive data, since the relational model, while valuable for this approach, created a need for some normalizing steps.
 
-### Finding duplicate item rows
+### Identify duplicate item rows
 
 ```
 SELECT
@@ -29,7 +29,7 @@ ORDER BY
 ### Delete duplicate item rows
 
 ```
-DELETE FROM pio_event_2 
+DELETE FROM pio_event_1 
 WHERE id IN
     (SELECT id
     FROM 
@@ -37,13 +37,11 @@ WHERE id IN
          ROW_NUMBER() OVER( PARTITION BY entityid,
          event
         ORDER BY id ) AS row_num
-        FROM pio_event_2 WHERE event='$set') t
+        FROM pio_event_1 WHERE event='$set') t
         WHERE t.row_num > 1 );
 ```
 
-
-
-### DUPLICATE VIEWS: IDENTIFY
+### Identify duplicate views
 
 ```
 SELECT
@@ -51,7 +49,7 @@ SELECT
     event,
     COUNT( targetentityid )
 FROM
-    pio_event_2
+    pio_event_1
 WHERE
     Event='view'
 GROUP BY
@@ -67,8 +65,7 @@ ORDER BY
     event;
 ```
 
-
-### DE-DUPLICATE VIEWS BY SAME USER
+### De-duplicate views by same user
 
 ```
 DELETE FROM pio_event_1 
